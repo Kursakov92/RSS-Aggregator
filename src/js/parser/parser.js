@@ -4,7 +4,6 @@ import getItems from "./getItems";
 const pars = new DOMParser();
 
 export default (url, response, state) => {
-
   const content = pars.parseFromString(response.data.contents, "application/xml");
   const parserError = content.querySelector('parsererror');
   if (parserError) {
@@ -16,4 +15,4 @@ export default (url, response, state) => {
   const feedDescription = content.querySelector('description').textContent;
   state.feeds.unshift({ feedTitle, feedDescription, url });
   state.posts.unshift(getItems(content));
-}
+};

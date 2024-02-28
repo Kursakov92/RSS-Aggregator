@@ -48,6 +48,10 @@ export default () => {
         .then((url) => axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`))
         .then((response) => parser(state.currentURL, response, watchState))
         .catch((e) => {
+          if (e.toString() === 'AxiosError: Network Error') {
+            watchState.error = 'networkError';
+            return;
+          }
           watchState.error = e.toString().slice(17);
         });
     } catch (error) {
