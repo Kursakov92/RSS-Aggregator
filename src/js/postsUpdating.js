@@ -7,7 +7,7 @@ const pars = new DOMParser();
 export default function postsUpdating(state) {
   try {
     const oldLinks = state.posts.flat().map((post) => post.postLink);
-    state.feeds.forEach((feed) => {
+    const promises = state.feeds.map((feed) => (
       axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(feed.url)}`)
         .then((response) => {
           if (response.status === 200) {
@@ -19,8 +19,13 @@ export default function postsUpdating(state) {
         .catch(() => {
           // eslint-disable-next-line
           state.error = i18n.t('networkError');
-        });
-    });
+        })
+    ));
+    Promise.all(promises)
+      .catch(() => {
+        // eslint-disable-next-line
+        state.error = i18n.t('networkError');
+      });
     setTimeout(() => {
       postsUpdating(state);
     }, 5000);
