@@ -15,9 +15,8 @@ export default function postsUpdating (state) {
           state.posts.unshift(newItems);
         }
       })
-      .catch(() => {
-        // eslint-disable-next-line
-        state.error = i18n.t('networkError');
+      .catch((e) => {
+        console.log(e);
       });
   });
   setTimeout(() => {
