@@ -1,9 +1,9 @@
 import onChange from 'on-change';
-import render from './render/render';
-import ru from '../locales/ru';
-import i18next from 'i18next';
-import * as yup from 'yup';
 import axios from 'axios';
+import * as yup from 'yup';
+import i18next from 'i18next';
+import ru from '../locales/ru';
+import render from './render/render';
 import parser from './parser/parser';
 import postsUpdating from './postsUpdating';
 
@@ -35,21 +35,24 @@ export default () => {
   postsUpdating(watchState);
 
   form.addEventListener('submit', (event) => {
-    event.preventDefault();
+    try {
+      event.preventDefault();
 
-    const schema = yup.string().url('invalidUrl').notOneOf(state.items, 'alreadyExistRss');
-
-    schema.validate(input.value.trim())
-      .then((data) => {
-        const url = data;
-        state.currentURL = url;
-        return url;
-      })
-      .then((url) => axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`))
-      .then((response) => parser(state.currentURL, response, watchState))
-      .catch((e) => {
-        watchState.error = e.toString().slice(17);
-      });
+      const schema = yup.string().url('invalidUrl').notOneOf(state.items, 'alreadyExistRss');
+      schema.validate(input.value.trim())
+        .then((data) => {
+          const url = data;
+          state.currentURL = url;
+          return url;
+        })
+        .then((url) => axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`))
+        .then((response) => parser(state.currentURL, response, watchState))
+        .catch((e) => {
+          watchState.error = e.toString().slice(17);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   const posts = document.querySelector('.posts');
