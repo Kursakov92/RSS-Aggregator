@@ -1,4 +1,4 @@
-import { i18n } from '../app';
+import i18n from '../i18n';
 import getItems from './getItems';
 
 const pars = new DOMParser();

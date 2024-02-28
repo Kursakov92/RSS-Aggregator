@@ -9,7 +9,6 @@
         "sourceType": "module"
     },
     "rules": {
-        "import/no-cycle": "off",
         "import/no-extraneous-dependencies": "off"
     }
 }

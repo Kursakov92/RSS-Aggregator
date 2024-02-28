@@ -1,31 +1,12 @@
 import onChange from 'on-change';
 import axios, { AxiosError } from 'axios';
 import * as yup from 'yup';
-import i18next from 'i18next';
-import ru from '../locales/ru';
+import i18n from './i18n';
+import state from './state';
 import render from './render/render';
 import parser from './parser/parser';
 import postsUpdating from './postsUpdating';
-
-export const feedback = document.querySelector('.feedback');
-export const input = document.querySelector('input');
-
-export const i18n = i18next.createInstance();
-i18n.init({
-  lng: 'ru',
-  debug: true,
-  resources: { ru },
-});
-
-export const state = {
-  error: '',
-  currentURL: '',
-  items: [],
-  feeds: [],
-  posts: [],
-  currentPost: null,
-  viewedPostIds: [],
-};
+import { input } from './elems';
 
 export default () => {
   const form = document.querySelector('form');

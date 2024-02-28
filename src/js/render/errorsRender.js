@@ -1,4 +1,5 @@
-import { feedback, input, i18n } from '../app';
+import i18n from '../i18n';
+import { feedback, input } from '../elems';
 
 export default (key) => {
   feedback.textContent = i18n.t(key);

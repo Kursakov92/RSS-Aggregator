@@ -1,4 +1,4 @@
-import { state } from '../app';
+import state from '../state';
 
 export default () => {
   const flatValue = state.posts.flat();

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import getItems from './parser/getItems';
-import { i18n } from './app';
+import i18n from './i18n';
 
 const pars = new DOMParser();
 
