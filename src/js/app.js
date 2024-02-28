@@ -1,5 +1,5 @@
 import onChange from 'on-change';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import * as yup from 'yup';
 import i18next from 'i18next';
 import ru from '../locales/ru';
@@ -48,7 +48,7 @@ export default () => {
         .then((url) => axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`))
         .then((response) => parser(state.currentURL, response, watchState))
         .catch((e) => {
-          if (e.toString() === 'AxiosError: Network Error') {
+          if (e instanceof AxiosError) {
             watchState.error = 'networkError';
             return;
           }

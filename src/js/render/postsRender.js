@@ -1,4 +1,4 @@
-import { state } from "../app";
+import { state } from '../app';
 
 export default () => {
   const flatValue = state.posts.flat();
@@ -21,6 +21,7 @@ export default () => {
     item.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-start', 'border-0', 'border-end-0');
     const link = document.createElement('a');
     link.href = post.postLink;
+    // eslint-disable-next-line no-unused-expressions
     state.viewedPostIds.includes(post.id) ? link.classList.add('fw-normal', 'link-secondary') : link.classList.add('fw-bold');
     link.setAttribute('data-id', post.id);
     link.setAttribute('target', '_blank');
@@ -33,9 +34,9 @@ export default () => {
     button.setAttribute('data-id', post.id);
     button.setAttribute('data-bs-toggle', 'modal');
     button.setAttribute('data-bs-target', '#modal');
-    button.textContent = 'Просмотр'
+    button.textContent = 'Просмотр';
     item.appendChild(button);
-    postsList.appendChild(item)
-  })
-  postsCard.appendChild(postsList)
-}
+    postsList.appendChild(item);
+  });
+  postsCard.appendChild(postsList);
+};

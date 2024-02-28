@@ -7,4 +7,4 @@ export default (value) => {
   const footer = document.querySelector('.modal-footer');
   const link = footer.querySelector('a');
   link.href = data.postLink;
-}
+};

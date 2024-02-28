@@ -1,3 +1,3 @@
-import uniqueId from 'lodash/uniqueId.js';
+import uniqueId from 'lodash/uniqueId';
 
 export default () => uniqueId();

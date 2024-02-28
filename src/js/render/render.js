@@ -1,12 +1,12 @@
-import errorsRender from "./errorsRender";
-import successRender from "./successRender";
-import feedsRender from "./feedsRender";
-import postsRender from "./postsRender";
-import modalRender from "./modalRender";
+import errorsRender from './errorsRender';
+import successRender from './successRender';
+import feedsRender from './feedsRender';
+import postsRender from './postsRender';
+import modalRender from './modalRender';
 
 export default (path, value) => {
   switch (path) {
-    case 'error': 
+    case 'error':
       errorsRender(value);
       break;
     case 'items':
@@ -24,5 +24,7 @@ export default (path, value) => {
     case 'viewedPostIds':
       postsRender();
       break;
+    default:
+      break;
   }
-}
+};

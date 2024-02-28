@@ -1,5 +1,4 @@
-import { feedback, input } from "../app";
-import { i18n } from "../app";
+import { feedback, input, i18n } from '../app';
 
 export default () => {
   feedback.textContent = i18n.t('success');
@@ -7,4 +6,4 @@ export default () => {
   feedback.classList.add('text-success');
   input.classList.remove('is-invalid');
   input.value = '';
-}
+};
