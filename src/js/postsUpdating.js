@@ -25,6 +25,7 @@ export default function postsUpdating(state) {
       postsUpdating(state);
     }, 5000);
   } catch (error) {
-    console.log(error);
+    // eslint-disable-next-line
+    state.error = i18n.t('networkError');
   }
 }

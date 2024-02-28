@@ -51,7 +51,8 @@ export default () => {
           watchState.error = e.toString().slice(17);
         });
     } catch (error) {
-      console.log(error);
+      // eslint-disable-next-line
+      watchState.error = i18n.t('networkError');
     }
   });
 
